@@ -1,0 +1,36 @@
+Docker install on Centos 7
+
+sudo yum install -y yum-utils   device-mapper-persistent-data   lvm2
+sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo docker run hello-world
+sudo docker ps
+docker images
+docker # list all commands
+docker exec --help
+docker inspect container_id  #
+
+docker run -it ubuntu bash
+CTRL-D
+
+docker run -d centos sleep 10 # run for 10 seconds and exit
+
+#MySql docker container
+docker pull mysql/mysql-server
+docker images
+docker run --name=mysql1 -d mysql/mysql-server 
+docker ps
+docker stop mysql1
+docker start mysql1
+docker exec -it mysql1 /bin/bash
+
+Running Jenkins container
+docker run jenkins
+docker inspect to get ip
+http://172.17.0.2:8080
+
+or by mapping ports
+docker run -p 8081:8080 jenkins
+http://localhost:8081
+must map volume for configuration data to persist
